@@ -1,12 +1,18 @@
+import os # operating system
+
 # 读取档案
 products = []
-with open('products.csv', 'r', encoding='utf-8') as f:
-	for line in f:
-		if 'a商品,价格' in line:
-			continue
-		name, price = line.strip().split(',')
-		products.append([name, price])
-print(products)
+if os.path.isfile('products.csv'):
+	print('yeah, I found the file')
+	with open('products.csv', 'r', encoding='utf-8') as f:
+		for line in f:
+			if 'a商品,价格' in line:
+				continue
+			name, price = line.strip().split(',')
+			products.append([name, price])
+	print(products)
+else:
+	print('I can not find the file')
 
 # 让使用者输入
 while True:
